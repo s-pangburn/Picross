@@ -288,8 +288,7 @@ namespace _53Project5 {
 		    if (board[i, k].Tag == "black") {
      		        count++;
 		    } else {
-			if (count > 0)
-			{
+			if (count > 0) {
 			    vLengths[position, i] = count;
 			    position++;
 
