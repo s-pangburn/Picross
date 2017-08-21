@@ -241,6 +241,28 @@ namespace _PicrossGame {
 			}
 		}
 
+		private void timer1_Tick(object sender, EventArgs e) {
+			updateTimer();
+		}
+
+		private void updateTimer() {
+			if (seconds > 0 || minutes > 0) {
+				if (seconds < 1) {
+					// Decrement minutes, taking into account negative seconds
+					seconds = 59 + seconds;
+					minutes--;
+				} else {
+					seconds--;
+				}
+				labelTime.Text = minutes + ":" + seconds.ToString("D2");
+
+			} else {
+				// The timer has reached zero
+				labelTime.Text = "0:00";
+				endGame("You're out of time! Game over!", "Aww. :(");
+			}
+		}
+
 		private void checkWin() {
 			if (hasWon()) endGame("Congratulations, you won!", "Good job!");
 		}
@@ -254,6 +276,13 @@ namespace _PicrossGame {
 				}
 			}
 			return true;
+		}
+
+		private void endGame(string message, string button) {
+			timer1.Enabled = false;
+			disableAll();
+			MessageBox.Show(message);
+			startButton.Text = button;
 		}
 
 		private void disableAll() {
@@ -278,35 +307,6 @@ namespace _PicrossGame {
 					board[i, j].Enabled = true;
 				}
 			}
-		}
-
-		private void timer1_Tick(object sender, EventArgs e) {
-			updateTimer();
-		}
-
-		private void updateTimer() {
-			if (seconds > 0 || minutes > 0) {
-				if (seconds < 1) {
-					// Decrement minutes, taking into account negative seconds
-					seconds = 59 + seconds;
-					minutes--;
-				} else {
-					seconds--;
-				}
-				labelTime.Text = minutes + ":" + seconds.ToString("D2");
-
-			} else {
-				// The timer has reached zero
-				labelTime.Text = "0:00";
-				endGame("You're out of time! Game over!", "Aww. :(");
-			}
-		}
-
-		private void endGame(string message, string button) {
-			timer1.Enabled = false;
-			disableAll();
-			MessageBox.Show(message);
-			startButton.Text = button;
 		}
 	}
 }
