@@ -1,4 +1,4 @@
-﻿namespace _53Project5
+﻿namespace _PicrossGame
 {
     partial class GUIPicross
     {
@@ -36,36 +36,36 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.buttonStart = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
+            //
             // groupPicture
-            // 
+            //
             this.groupPicture.Location = new System.Drawing.Point(14, 49);
             this.groupPicture.Name = "groupPicture";
             this.groupPicture.Size = new System.Drawing.Size(259, 252);
             this.groupPicture.TabIndex = 0;
             this.groupPicture.TabStop = false;
             this.groupPicture.Text = " ";
-            // 
+            //
             // groupHNums
-            // 
+            //
             this.groupHNums.Location = new System.Drawing.Point(279, 49);
             this.groupHNums.Name = "groupHNums";
             this.groupHNums.Size = new System.Drawing.Size(97, 252);
             this.groupHNums.TabIndex = 1;
             this.groupHNums.TabStop = false;
-            // 
+            //
             // groupVNums
-            // 
+            //
             this.groupVNums.Location = new System.Drawing.Point(14, 307);
             this.groupVNums.Name = "groupVNums";
             this.groupVNums.Size = new System.Drawing.Size(259, 107);
             this.groupVNums.TabIndex = 2;
             this.groupVNums.TabStop = false;
-            // 
+            //
             // labelTime
-            // 
+            //
             this.labelTime.AutoSize = true;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTime.Location = new System.Drawing.Point(300, 325);
@@ -73,14 +73,14 @@
             this.labelTime.Size = new System.Drawing.Size(54, 26);
             this.labelTime.TabIndex = 3;
             this.labelTime.Text = "4:00";
-            // 
+            //
             // timer1
-            // 
+            //
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
+            //
             // labelTitle
-            // 
+            //
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.Location = new System.Drawing.Point(73, 6);
@@ -88,24 +88,24 @@
             this.labelTitle.Size = new System.Drawing.Size(137, 39);
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "PICROSS!";
-            // 
-            // buttonStart
-            // 
-            this.buttonStart.Location = new System.Drawing.Point(290, 366);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(73, 23);
-            this.buttonStart.TabIndex = 5;
-            this.buttonStart.Text = "Start!";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-            // 
+            //
+            // startButton
+            //
+            this.startButton.Location = new System.Drawing.Point(290, 366);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(73, 23);
+            this.startButton.TabIndex = 5;
+            this.startButton.Text = "Start!";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            //
             // GUIPicross
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(388, 417);
-            this.Controls.Add(this.buttonStart);
+            this.Controls.Add(this.startButton);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelTime);
             this.Controls.Add(this.groupVNums);
@@ -127,7 +127,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.Button startButton;
     }
 }
-

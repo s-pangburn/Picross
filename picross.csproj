@@ -7,7 +7,7 @@
     <ProjectGuid>{70E13898-B2A7-4C52-B5EF-EA1460FA8F54}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_53Project5</RootNamespace>
+    <RootNamespace>_PicrossGame</RootNamespace>
     <AssemblyName>53Project5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

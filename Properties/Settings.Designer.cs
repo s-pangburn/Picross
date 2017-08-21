@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _53Project5.Properties
+namespace _PicrossGame.Properties
 {
 
 

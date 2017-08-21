@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _53Project5
+namespace _PicrossGame
 {
     static class Program
     {
