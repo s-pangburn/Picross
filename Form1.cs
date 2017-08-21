@@ -97,14 +97,14 @@ namespace _PicrossGame {
 		}
 
 		private Button createButton(int row, int col,
-																double buttonWidth,
-																double buttonHeight) {
+					    double buttonWidth,
+					    double buttonHeight) {
 			Button newButton = new Button();
 
 			newButton.Width = (int) buttonWidth;
 			newButton.Height = (int) buttonHeight;
 			newButton.Location = new Point((int) (row*buttonWidth),
-																		 (int) (col*buttonHeight));
+						       (int) (col*buttonHeight));
 			newButton.Click += buttonWasClicked;
 			newButton.Enabled = false;
 
@@ -211,7 +211,7 @@ namespace _PicrossGame {
 
 			Label number = new Label();
 			number.Location = new Point((int)((col * hSpace)+ 3),
-																	(int)(row * vSpace));
+						    (int)(row * vSpace));
 			number.Width = 20;
 			number.Height = 22;
 			number.Font = new Font("Impact", 15);
@@ -221,7 +221,7 @@ namespace _PicrossGame {
 				if (columnHintNums[row, col] == 10) {
 					number.Width = 32; // If the number is 10, widen and reposition
 					number.Location = new Point((int)((col * hSpace) - 3),
-																			(int)(row * vSpace));
+								    (int)(row * vSpace));
 				}
 			}
 
