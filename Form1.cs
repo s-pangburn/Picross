@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace _53Project5
-{
-    public partial class GUIPicross : Form
-    {
+namespace _53Project5 {
+	
+    public partial class GUIPicross : Form {
         public const int DIMENSIONS = 10; //Dimensions of the grid
         public const int TABLESIZE = 7; //Size of the row and column count boxes
 
@@ -26,8 +25,7 @@ namespace _53Project5
             createGrid();
         }
 
-        private void buttonStart_Click(object sender, EventArgs e)
-        {
+        private void buttonStart_Click(object sender, EventArgs e) {
             readFile();
             fillHGroup(); //Fill tables with row and column counts
             fillVGroup();
@@ -41,8 +39,7 @@ namespace _53Project5
             buttonStart.Enabled = false;
         }
         
-        private void readFile()
-        {
+        private void readFile() {
             int picCount, rndPic, n;
             string line;
             StreamReader file = new StreamReader("pics.txt");
@@ -73,8 +70,7 @@ namespace _53Project5
 
         }
 
-        private void tagRow(string line, int i)
-        {
+        private void tagRow(string line, int i) {
             for (int j = 0; j < DIMENSIONS; j++) {
                 if (line[j] == 'x') {
                     board[j, i].Tag = "black";
@@ -86,8 +82,7 @@ namespace _53Project5
             }
         }
 
-        private void createGrid() 
-        {
+        private void createGrid() {
             board = new Button[DIMENSIONS, DIMENSIONS]; //Sets up the 2D array of pointers to buttons;
 
             //Width and Height based on available space
@@ -101,8 +96,7 @@ namespace _53Project5
             }
         }
         
-        private Button createButton(int row, int col, double buttonWidth, double buttonHeight) 
-        {
+        private Button createButton(int row, int col, double buttonWidth, double buttonHeight) {
             Button newButton = new Button();
 
             newButton.Width = (int) buttonWidth;
@@ -115,8 +109,7 @@ namespace _53Project5
             return newButton;
         }
 
-        private void fillHGroup()
-        {
+        private void fillHGroup() {
             for (int i = 0; i < DIMENSIONS; i++) {
                 populateHSegments(i); //Calculates table values
             }
@@ -128,8 +121,7 @@ namespace _53Project5
             }
         }
 
-        private Label createHNums(int row, int col)
-        {
+        private Label createHNums(int row, int col) {
             int hSpace = 25, vSpace = 25; //Space between numbers
             Label number = new Label();
             number.Location = new Point((int)(col * hSpace), (int)(row * vSpace));
@@ -147,8 +139,7 @@ namespace _53Project5
             return number;
         }
 
-        private void fillVGroup()
-        {
+        private void fillVGroup() {
             populateVSegments(); //Initializes table
 
             for (int i = 0; i < DIMENSIONS; i++) {
@@ -158,8 +149,7 @@ namespace _53Project5
             }
         }
 
-        private Label createVNums(int row, int col)
-        {
+        private Label createVNums(int row, int col) {
             int hSpace = 26, vSpace = 20;
             Label number = new Label();
             number.Location = new Point((int)((col * hSpace)+ 3), (int)(row * vSpace));
@@ -179,8 +169,7 @@ namespace _53Project5
             return number;
         }
 
-        private void buttonWasClicked(object sender, EventArgs e) 
-        {
+        private void buttonWasClicked(object sender, EventArgs e) {
             Button buttonClicked = (Button)sender;
             if (buttonClicked.Tag == "black") {
                 buttonClicked.Text = "X";
@@ -192,16 +181,11 @@ namespace _53Project5
             }
         }
 
-        private void checkWin()
-        {
-            if (hasWon())
-            {
-                endGame("Congratulations, you won!", "Good job!");
-            }
+        private void checkWin() {
+            if (hasWon()) endGame("Congratulations, you won!", "Good job!");
         }
 
-        private bool hasWon()
-        {
+        private bool hasWon() {
             for (int i = 0; i < DIMENSIONS; i++) {
                 for (int j = 0; j < DIMENSIONS; j++) {
                     if (board[i, j].Tag == "black" && board[i, j].Enabled == true) {
@@ -212,8 +196,7 @@ namespace _53Project5
             return true;
         }
 
-        private void disableAll()
-        {
+        private void disableAll() {
             for (int i = 0; i < DIMENSIONS; i++) {
                 for (int j = 0; j < DIMENSIONS; j++) {
                     board[i, j].Enabled = false;
@@ -229,8 +212,7 @@ namespace _53Project5
             }
         }
 
-        private void enableAll()
-        {
+        private void enableAll() {
             for (int i = 0; i < DIMENSIONS; i++) {
                 for (int j = 0; j < DIMENSIONS; j++) {
                     board[i, j].Enabled = true;
@@ -238,13 +220,11 @@ namespace _53Project5
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
+        private void timer1_Tick(object sender, EventArgs e) {
             updateTimer();
         }
 
-        private void updateTimer()
-        {
+        private void updateTimer() {
             if (seconds > 0 || minutes > 0) {
                 if (seconds < 1) { //If the timer reaches 0 seconds 
                     seconds = 59 + seconds; //Tick down minutes, accomodating extra seconds lost (seconds will be negative)
@@ -261,8 +241,7 @@ namespace _53Project5
             }
         }
 
-        private void endGame(string message, string button)
-        {
+        private void endGame(string message, string button) {
             timer1.Enabled = false;
             disableAll();
             MessageBox.Show(message);
@@ -270,76 +249,64 @@ namespace _53Project5
         }
 
         //NOTE: Ported over from Project 1 with little modification
-        private void populateHSegments(int col)
-        {
-	        int count = 0;     //Tracks number of valid spaces
-	        int position = 0;  //Index of the array
+        private void populateHSegments(int col) {
+	    int count = 0;     //Tracks number of valid spaces
+	    int position = 0;  //Index of the array
 
-	        for (int i = 0; i < DIMENSIONS; i++)
-	        {
-		        if (board[i, col].Tag == "black")
-		        {
-			        count++;
-		        }
-		        else
-		        {
-			        if (count > 0) //If we finished counting a segment
-			        {
-				        hLengths[col, position] = count;  //Store value
-				        position++;                       //Increment index
+	    for (int i = 0; i < DIMENSIONS; i++) {
+		if (board[i, col].Tag == "black") {
+		    count++;
+		} else {
+                    //If we finished counting a segment
+                    if (count > 0) {
+	                hLengths[col, position] = count;  //Store value
+			position++;                       //Increment index
 
-				        count = 0;                        //Reset count
-			        }
-		        }
-	        }
+			count = 0;                        //Reset count
+		    }
+	         }
+	     }
 
-	        if (count > 0) //If the end is reached without stumbling upon a blank space
-	        {
-		        hLengths[col, position] = count;
-		        position++;
+	    //If the end is reached without stumbling upon a blank space
+	    if (count > 0) {
+		hLengths[col, position] = count;
+		position++;
 
-		        count = 0;
-	        }
+		count = 0;
+	    }   
         }
 
         private void populateVSegments()
         {
-	        int count = 0;    //Tracks number of valid spaces
-	        int position = 0; //Index of the array
+	    int count = 0;    //Tracks number of valid spaces
+	    int position = 0; //Index of the array
 
-	        for (int i = 0; i < DIMENSIONS; i++)
-	        {
-		        position = 0;
+	    for (int i = 0; i < DIMENSIONS; i++) {
+		position = 0;
 
-		        for (int k = 0; k < DIMENSIONS; k++)
-		        {
+		for (int k = 0; k < DIMENSIONS; k++) {
+		    if (board[i, k].Tag == "black") {
+     		        count++;
+		    } else {
+			if (count > 0)
+			{
+			    vLengths[position, i] = count;
+			    position++;
 
-			        if (board[i, k].Tag == "black")
-			        {
-				        count++;
-			        }
-			        else
-			        {
-				        if (count > 0)
-				        {
-					        vLengths[position, i] = count;
-					        position++;
-
-					        count = 0;
-				        }
-			        }
-		        }
+			    count = 0;
+			}
+		    }
+		}
 
 		        //Reset count once we reach the end of the column.
-		        if (count > 0)
-                {
-			        vLengths[position, i] = count;
-			        position++;
+		if (count > 0) {
+		    vLengths[position, i] = count;
+		    position++;
 
-			        count = 0;
-		        }
-	        }
+		    count = 0;
+		 }
+	    }
         }
-
+	    
     }
 }
