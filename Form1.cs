@@ -163,7 +163,7 @@ namespace _PicrossGame {
 				if (rowHintNums[row, col] == 10) number.Width = 40; // Widen the label to accomodate 10
 			}
 
-			groupHNums.Controls.Add(number);
+			rowHintNums.Controls.Add(number);
 			return number;
 		}
 
@@ -225,7 +225,7 @@ namespace _PicrossGame {
 				}
 			}
 
-			groupVNums.Controls.Add(number);
+			columnHintNums.Controls.Add(number);
 			return number;
 		}
 
